@@ -1,70 +1,55 @@
 [
   {
+    "description": "User Login",
     "method": "POST",
     "url": "http://localhost:3000/api/login",
-    "json": {
-      "email": "iamskidrow@gmail.com",
-      "password": "123456"
+    "headers": {
+      "Content-Type": "application/json"
     },
-    "expected_status": 302
+    "json": {
+      "email": "example@example.com",
+      "password": "password123"
+    },
+    "expected_status": 302,
+    "expected_headers": {
+      "Location": "/dashboard"
+    },
+    "timeout": 5000,
+    "retry_count": 3,
+    "retry_delay": 1000,
+    "skip": false
   },
   {
+    "description": "Get Products",
     "method": "GET",
     "url": "http://localhost:3000/api/products",
-    "json": {},
+    "params": {
+      "limit": 10,
+      "page": 1
+    },
+    "headers": {
+      "Authorization": "Bearer ${login_token}"
+    },
     "expected_status": 200,
     "expected_schema": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "sub_category": {
-            "type": "string"
-          },
-          "sku": {
-            "type": "string"
-          },
-          "price": {
-            "type": "number"
-          },
-          "cost": {
-            "type": "number"
-          },
-          "brand": {
-            "type": "string"
-          },
-          "unit": {
-            "type": "string"
-          },
-          "quantity_in_stock": {
-            "type": "integer"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image_url": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string"
-          },
-          "updated_at": {
-            "type": "string"
-          },
-          "__v": {
-            "type": "integer"
-          }
-        }
+          "_id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "price": { "type": "number" }
+        },
+        "required": ["_id", "name", "price"]
       }
-    }
+    },
+    "expected_response": {
+      "length": { "min": 1 }
+    },
+    "timeout": 10000,
+    "retry_count": 2,
+    "retry_delay": 2000,
+    "skip": true
   }
 ]
