@@ -1,0 +1,70 @@
+[
+  {
+    "method": "POST",
+    "url": "http://localhost:3000/api/login",
+    "json": {
+      "email": "iamskidrow@gmail.com",
+      "password": "123456"
+    },
+    "expected_status": 302
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:3000/api/products",
+    "json": {},
+    "expected_status": 200,
+    "expected_schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "sub_category": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "cost": {
+            "type": "number"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "quantity_in_stock": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+]
