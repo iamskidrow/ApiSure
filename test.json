@@ -1,55 +1,219 @@
 [
   {
-    "description": "User Login",
-    "method": "POST",
-    "url": "http://localhost:3000/api/login",
-    "headers": {
-      "Content-Type": "application/json"
-    },
-    "json": {
-      "email": "example@example.com",
-      "password": "password123"
-    },
-    "expected_status": 302,
+    "description": "Successful GET request with valid content type",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200,
     "expected_headers": {
-      "Location": "/dashboard"
-    },
-    "timeout": 5000,
-    "retry_count": 3,
-    "retry_delay": 1000,
-    "skip": false
+      "Content-Type": "application/json; charset=utf-8"
+    }
   },
   {
-    "description": "Get Products",
+    "description": "GET request to test response time with valid status",
     "method": "GET",
-    "url": "http://localhost:3000/api/products",
-    "params": {
-      "limit": 10,
-      "page": 1
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "expected_status": 200,
+    "timeout": 3000
+  },
+  {
+    "description": "GET request expecting a different content type",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "expected_status": 200,
+    "expected_headers": {
+      "Content-Type": "text/html"
+    }
+  },
+  {
+    "description": "POST request to test response with a specific body",
+    "method": "POST",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "json": {
+      "userId": 1,
+      "title": "foo",
+      "body": "bar"
     },
-    "headers": {
-      "Authorization": "Bearer ${login_token}"
+    "expected_status": 201,
+    "expected_response": {
+      "userId": 1,
+      "title": "foo",
+      "body": "bar"
+    }
+  },
+  {
+    "description": "POST request with invalid data to test error handling",
+    "method": "POST",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "json": {
+      "invalid_field": "value"
+    },
+    "expected_status": 400
+  },
+  {
+    "description": "GET request to verify headers like Cache-Control",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200,
+    "expected_headers": {
+      "Cache-Control": "public, max-age=3600"
+    }
+  },
+  {
+    "description": "GET request to an invalid endpoint to test 404 error",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/invalidendpoint",
+    "expected_status": 404
+  },
+  {
+    "description": "DELETE request to remove a post",
+    "method": "DELETE",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200
+  },
+  {
+    "description": "PATCH request to update a post",
+    "method": "PATCH",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "json": {
+      "title": "Updated Title"
     },
     "expected_status": 200,
+    "expected_response": {
+      "title": "Updated Title"
+    }
+  },
+  {
+    "description": "GET request where the test case is skipped",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "skip": true
+  },
+  {
+    "description": "GET request to validate schema with correct response",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200,
     "expected_schema": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "_id": { "type": "string" },
-          "name": { "type": "string" },
-          "category": { "type": "string" },
-          "price": { "type": "number" }
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
         },
-        "required": ["_id", "name", "price"]
-      }
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "id",
+        "title",
+        "body"
+      ]
+    }
+  },
+  {
+    "description": "GET request to validate schema with missing key",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200,
+    "expected_schema": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "id",
+        "title"
+      ]
     },
     "expected_response": {
-      "length": { "min": 1 }
+      "userId": 1,
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+    }
+  },
+  {
+    "description": "GET request to validate schema with extra key",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "expected_status": 200,
+    "expected_schema": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "id",
+        "title"
+      ]
     },
-    "timeout": 10000,
-    "retry_count": 2,
-    "retry_delay": 2000,
-    "skip": true
+    "expected_response": {
+      "userId": 1,
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "extra": "additional_data"
+    }
+  },
+  {
+    "description": "GET request with different timeout settings",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "expected_status": 200,
+    "timeout": 10000
+  },
+  {
+    "description": "POST request with valid payload and authentication",
+    "method": "POST",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "headers": {
+      "Authorization": "Bearer valid_token"
+    },
+    "json": {
+      "userId": 1,
+      "title": "foo",
+      "body": "bar"
+    },
+    "expected_status": 201
+  },
+  {
+    "description": "POST request with invalid authentication token",
+    "method": "POST",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "headers": {
+      "Authorization": "Bearer invalid_token"
+    },
+    "json": {
+      "userId": 1,
+      "title": "foo",
+      "body": "bar"
+    },
+    "expected_status": 401
   }
 ]

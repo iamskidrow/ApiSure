@@ -1,0 +1,659 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API Test Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; }
+            h1, h2 { color: #2c3e50; }
+            .summary { background-color: #ecf0f1; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+            th { background-color: #3498db; color: white; }
+            tr:nth-child(even) { background-color: #f2f2f2; }
+            .test-case { background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+            .test-case.passed { border-left-color: #2ecc71; }
+            .test-case.failed { border-left-color: #e74c3c; }
+            .skipped { border-left-color: #f39c12; }
+            .details { margin-top: 10px; }
+            .details p { margin: 5px 0; }
+            .error { color: #e74c3c; }
+            .warning { color: #f39c12; }
+            .status-passed { color: #2ecc71; font-weight: bold; }
+            .status-failed { color: #e74c3c; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <h1>API Test Report</h1>
+        <div class="summary">
+            <h2>Summary</h2>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Total Test Cases</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Executed Test Cases</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>Passed</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Failed</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Average Response Time</td>
+                    <td>473.76 ms</td>
+                </tr>
+                <tr>
+                    <td>Average Content Length</td>
+                    <td>44.00 B</td>
+                </tr>
+                <tr>
+                    <td>Report Generated</td>
+                    <td>2024-08-28 16:58:08</td>
+                </tr>
+            </table>
+        </div>
+        <h2>Test Case Details</h2>
+        
+        <div class="test-case passed">
+            <h3>Test Case 1: Successful GET request with valid content type</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>434.68 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 2: GET request to test response time with valid status</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>279.06 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 3: GET request expecting a different content type</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>244.85 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Header Validation Failed: Header 'Content-Type' value mismatch: expected 'text/html', got 'application/json; charset=utf-8'</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 4: POST request to test response with a specific body</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>POST</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>201 (Expected: 201)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>510.21 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>65.00 B</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 5: POST request with invalid data to test error handling</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>POST</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>201 (Expected: 400)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>523.23 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>43.00 B</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Status Code Mismatch: Expected 400, but got 201</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 6: GET request to verify headers like Cache-Control</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>285.55 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Header Validation Failed: Header 'Cache-Control' value mismatch: expected 'public, max-age=3600', got 'max-age=43200'</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 7: GET request to an invalid endpoint to test 404 error</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/invalidendpoint</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>None</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Request failed</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 8: DELETE request to remove a post</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>DELETE</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>1.13 s</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>2.00 B</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 9: PATCH request to update a post</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>PATCH</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>1.12 s</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 11: GET request to validate schema with correct response</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>262.43 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 12: GET request to validate schema with missing key</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>278.00 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Schema Validation Failed. Missing keys: set(), Extra keys: {'body'}</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 13: GET request to validate schema with extra key</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts/1</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>256.15 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Schema Validation Failed. Missing keys: set(), Extra keys: {'body'}</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 14: GET request with different timeout settings</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>200 (Expected: 200)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>253.49 ms</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 15: POST request with valid payload and authentication</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-passed">Passed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>POST</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>201 (Expected: 201)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>1.57 s</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>65.00 B</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 16: POST request with invalid authentication token</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="status-failed">Failed</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>POST</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>https://jsonplaceholder.typicode.com/posts</td>
+                </tr>
+                <tr>
+                    <td>Status Code</td>
+                    <td>201 (Expected: 401)</td>
+                </tr>
+                <tr>
+                    <td>Response Time</td>
+                    <td>1.13 s</td>
+                </tr>
+                <tr>
+                    <td>Content Length</td>
+                    <td>65.00 B</td>
+                </tr>
+            </table>
+            
+            <div class="details">
+                <h4>Validation Results</h4>
+                <ul>
+                
+                    <li class="error">Status Code Mismatch: Expected 401, but got 201</li>
+                
+                </ul>
+            </div>
+            
+        </div>
+        
+    </body>
+    </html>
+    
