@@ -1,0 +1,261 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API Test Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; }
+            h1, h2 { color: #2c3e50; }
+            .summary { background-color: #ecf0f1; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+            .test-case { background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+            .pass { border-left-color: #2ecc71; }
+            .fail { border-left-color: #e74c3c; }
+            .skipped { border-left-color: #f39c12; }
+            .details { margin-top: 10px; }
+            .details p { margin: 5px 0; }
+            .error { color: #e74c3c; }
+            .warning { color: #f39c12; }
+        </style>
+    </head>
+    <body>
+        <h1>API Test Report</h1>
+        <div class="summary">
+            <h2>Summary</h2>
+            <p>Total Test Cases: 15</p>
+            <p>Executed Test Cases: 14</p>
+            <p>Passed: 8</p>
+            <p>Failed: 7</p>
+            <p>Average Response Time: 410.55 ms</p>
+            <p>Average Content Length: 44.00 B</p>
+            <p>Report Generated: 2024-08-28 01:18:04</p>
+        </div>
+        <h2>Test Case Details</h2>
+        
+        <div class="test-case passed">
+            <h3>Test Case 1: Successful GET request with valid content type</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 316.37 ms</p>
+                <p>Content Length: Unknown</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 2: GET request to test response time with valid status</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 242.46 ms</p>
+                <p>Content Length: Unknown</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 3: GET request expecting a different content type</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 238.00 ms</p>
+                <p>Content Length: Unknown</p>
+                
+                    
+                        <p class="error">Header Validation Failed: Header 'Content-Type' value mismatch: expected 'text/html', got 'application/json; charset=utf-8'</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 4: POST request to test response with a specific body</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: POST</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 201 (Expected: 201)</p>
+                <p>Response Time: 492.99 ms</p>
+                <p>Content Length: 65.00 B</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 5: POST request with invalid data to test error handling</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: POST</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 201 (Expected: 400)</p>
+                <p>Response Time: 577.92 ms</p>
+                <p>Content Length: 43.00 B</p>
+                
+                    
+                        <p class="error">Status Code Mismatch: Expected 400, but got 201</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 6: GET request to verify headers like Cache-Control</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 236.15 ms</p>
+                <p>Content Length: Unknown</p>
+                
+                    
+                        <p class="error">Header Validation Failed: Header 'Cache-Control' value mismatch: expected 'public, max-age=3600', got 'max-age=43200'</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 7: GET request to an invalid endpoint to test 404 error</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/invalidendpoint</p>
+                <p>Status Code: None</p>
+                <p>Response Time: None</p>
+                <p>Content Length: None</p>
+                
+                    
+                        <p class="error">Request failed</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 8: DELETE request to remove a post</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: DELETE</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 1.01 s</p>
+                <p>Content Length: 2.00 B</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 9: PATCH request to update a post</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: PATCH</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 1.08 s</p>
+                <p>Content Length: Unknown</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 11: GET request to validate schema with correct response</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 247.72 ms</p>
+                <p>Content Length: Unknown</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 12: GET request to validate schema with missing key</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 251.05 ms</p>
+                <p>Content Length: Unknown</p>
+                
+                    
+                        <p class="error">Schema Validation Failed. Missing keys: set(), Extra keys: {'body'}</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 13: GET request to validate schema with extra key</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts/1</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 254.23 ms</p>
+                <p>Content Length: Unknown</p>
+                
+                    
+                        <p class="error">Schema Validation Failed. Missing keys: set(), Extra keys: {'body'}</p>
+                    
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 14: GET request with different timeout settings</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: GET</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 200 (Expected: 200)</p>
+                <p>Response Time: 239.32 ms</p>
+                <p>Content Length: Unknown</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case passed">
+            <h3>Test Case 15: POST request with valid payload and authentication</h3>
+            <p>Status: Passed</p>
+            <div class="details">
+                <p>Method: POST</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 201 (Expected: 201)</p>
+                <p>Response Time: 1.14 s</p>
+                <p>Content Length: 65.00 B</p>
+                
+            </div>
+        </div>
+        
+        <div class="test-case failed">
+            <h3>Test Case 16: POST request with invalid authentication token</h3>
+            <p>Status: Failed</p>
+            <div class="details">
+                <p>Method: POST</p>
+                <p>URL: https://jsonplaceholder.typicode.com/posts</p>
+                <p>Status Code: 201 (Expected: 401)</p>
+                <p>Response Time: 1.02 s</p>
+                <p>Content Length: 65.00 B</p>
+                
+                    
+                        <p class="error">Status Code Mismatch: Expected 401, but got 201</p>
+                    
+                
+            </div>
+        </div>
+        
+    </body>
+    </html>
+    
